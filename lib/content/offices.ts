@@ -28,9 +28,11 @@ export interface OperatingCountry {
 }
 
 export const operatingCountries: OperatingCountry[] = [
+  { name: "Senegal", x: 24, y: 38, sectorCount: 3 },
   { name: "Nigeria", x: 41, y: 47, sectorCount: 6 },
   { name: "Ghana", x: 33, y: 49, sectorCount: 4 },
   { name: "Côte d'Ivoire", x: 28, y: 48, sectorCount: 3 },
+  { name: "Cameroon", x: 47, y: 54, sectorCount: 3 },
   { name: "Kenya", x: 68, y: 57, sectorCount: 5 },
   { name: "Rwanda", x: 62, y: 59, sectorCount: 3 },
   { name: "Tanzania", x: 66, y: 63, sectorCount: 4 },
