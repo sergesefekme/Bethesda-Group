@@ -57,7 +57,7 @@ export function CustomCursor() {
           width: hovering ? 52 : 30,
           height: hovering ? 52 : 30,
           opacity: hovering ? 1 : 0.6,
-          backgroundColor: hovering ? "rgba(166,106,61,0.08)" : "rgba(166,106,61,0)",
+          backgroundColor: hovering ? "rgba(154,90,36,0.08)" : "rgba(154,90,36,0)",
         }}
         transition={{ type: "spring", stiffness: 250, damping: 20 }}
       />

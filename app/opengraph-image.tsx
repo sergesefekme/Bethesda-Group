@@ -28,7 +28,7 @@ export default function OpengraphImage() {
       >
         <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
           <span style={{ fontSize: 34, fontWeight: 800, color: "#F7F4EF" }}>Bethesda</span>
-          <span style={{ fontSize: 34, fontWeight: 800, color: "#A66A3D" }}>Group</span>
+          <span style={{ fontSize: 34, fontWeight: 800, color: "#D6A24A" }}>Group</span>
         </div>
         <div>
           <div style={{ fontSize: 68, fontWeight: 800, color: "#F7F4EF", lineHeight: 1.05, maxWidth: 900 }}>
@@ -38,7 +38,7 @@ export default function OpengraphImage() {
             A pan-African investment technology group across seven sectors.
           </div>
         </div>
-        <div style={{ height: 6, width: 180, background: "#A66A3D" }} />
+        <div style={{ height: 6, width: 180, background: "#D6A24A" }} />
       </div>
     ),
     size

@@ -18,9 +18,9 @@ const config: Config = {
           600: "#325A89",
         },
         cognac: {
-          DEFAULT: "#A66A3D", // accent / CTA — used sparingly, never a dominant fill
-          light: "#C08A5E",
-          dark: "#8A5530",
+          DEFAULT: "#9A5A24", // accent / CTA — rich copper; legible (AA) as small text on offwhite
+          light: "#D6A24A", // luminous gold — for accents on dark navy backgrounds
+          dark: "#7C4418", // deep bronze — hover / pressed states
         },
         offwhite: {
           DEFAULT: "#F7F4EF", // warm base — avoids clinical pure white against navy

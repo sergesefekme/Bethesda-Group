@@ -6,8 +6,8 @@
   --navy: #1e3a5f;
   --navy-900: #12263d;
   --navy-700: #274a75;
-  --cognac: #a66a3d;
-  --cognac-light: #c08a5e;
+  --cognac: #9a5a24;
+  --cognac-light: #d6a24a;
   --offwhite: #f7f4ef;
   --offwhite-dark: #ece7de;
   --warmgray: #c9c2b8;
@@ -72,7 +72,7 @@
   /* Duotone treatment used by PlaceholderImage — cinematic navy/cognac blocks */
   .placeholder-duotone {
     background-image:
-      radial-gradient(120% 120% at 20% 10%, rgba(166, 106, 61, 0.55) 0%, transparent 55%),
+      radial-gradient(120% 120% at 20% 10%, rgba(214, 162, 74, 0.5) 0%, transparent 55%),
       radial-gradient(120% 120% at 90% 80%, rgba(62, 92, 116, 0.65) 0%, transparent 50%),
       linear-gradient(135deg, #12263d 0%, #1e3a5f 55%, #325a89 100%);
   }
