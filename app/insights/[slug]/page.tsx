@@ -33,7 +33,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <PageHero eyebrow={insight.category} title={insight.title}>
+      <PageHero eyebrow={insight.category} title={insight.title} image={insight.image}>
         <div className="flex flex-wrap items-center gap-3 text-sm text-warmgray">
           <span>{insight.author}</span>
           <span aria-hidden>·</span>
@@ -46,7 +46,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <article className="bg-offwhite py-24 md:py-32">
         <div className="container-content max-w-3xl">
           <Reveal from="up">
-            <PlaceholderImage label={`${insight.category} — article hero`} aspect="aspect-[16/9]" />
+            <PlaceholderImage src={insight.image} label={insight.title} aspect="aspect-[16/9]" sizes="(max-width: 768px) 100vw, 768px" />
           </Reveal>
           <div className="mt-12 space-y-6">
             {insight.body.map((para, i) => (
@@ -70,7 +70,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             {more.map((m) => (
               <Link key={m.slug} href={`/insights/${m.slug}`} className="group flex gap-5" data-cursor="link">
                 <div className="w-32 shrink-0 overflow-hidden rounded-lg">
-                  <PlaceholderImage label={m.category} aspect="aspect-square" />
+                  <PlaceholderImage src={m.image} label={m.title} aspect="aspect-square" sizes="128px" />
                 </div>
                 <div>
                   <Badge tone="cognac">{m.category}</Badge>

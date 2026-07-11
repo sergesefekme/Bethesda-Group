@@ -30,6 +30,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         eyebrow={`Case study · ${sector?.name ?? item.sector}`}
         title={item.name}
         description={item.summary}
+        image={sector?.image}
       >
         <div className="flex flex-wrap items-center gap-2">
           <Badge tone="light">{item.country}</Badge>
@@ -42,7 +43,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         <div className="container-content grid gap-14 lg:grid-cols-[1.3fr_1fr]">
           <div>
             <Reveal from="up">
-              <PlaceholderImage label={`${item.name} — hero`} aspect="aspect-[16/9]" />
+              <PlaceholderImage src={sector?.image} label={`${item.name}`} aspect="aspect-[16/9]" sizes="(max-width: 1024px) 100vw, 66vw" />
             </Reveal>
             <Reveal from="up" delay={0.05}>
               <div className="mt-10 space-y-5">

@@ -32,6 +32,8 @@ export interface Sector {
     | "realestate"
     | "agro"
     | "advisory";
+  /** Photo under /public/images/sectors/<slug>.jpg */
+  image: string;
 }
 
 export const sectors: Sector[] = [
@@ -54,6 +56,7 @@ export const sectors: Sector[] = [
       { name: "[PLACEHOLDER] Mini-grid platform", country: "Kenya", note: "[PLACEHOLDER] 80+ rural sites" },
     ],
     icon: "energy",
+    image: "/images/sectors/renewable-energy.jpg",
   },
   {
     slug: "technology-media",
@@ -74,6 +77,7 @@ export const sectors: Sector[] = [
       { name: "[PLACEHOLDER] Logistics SaaS", country: "Egypt", note: "[PLACEHOLDER] Regional expansion" },
     ],
     icon: "tech",
+    image: "/images/sectors/technology-media.jpg",
   },
   {
     slug: "healthcare",
@@ -94,6 +98,7 @@ export const sectors: Sector[] = [
       { name: "[PLACEHOLDER] Pharma manufacturing", country: "Nigeria", note: "[PLACEHOLDER] Local production" },
     ],
     icon: "health",
+    image: "/images/sectors/healthcare.jpg",
   },
   {
     slug: "education",
@@ -114,6 +119,7 @@ export const sectors: Sector[] = [
       { name: "[PLACEHOLDER] Skills platform", country: "South Africa", note: "[PLACEHOLDER] 100k learners" },
     ],
     icon: "education",
+    image: "/images/sectors/education.jpg",
   },
   {
     slug: "real-estate-infrastructure",
@@ -134,6 +140,7 @@ export const sectors: Sector[] = [
       { name: "[PLACEHOLDER] Housing scheme", country: "Nigeria", note: "[PLACEHOLDER] 1,500 units" },
     ],
     icon: "realestate",
+    image: "/images/sectors/real-estate-infrastructure.jpg",
   },
   {
     slug: "agro-allied-fmcg",
@@ -154,6 +161,7 @@ export const sectors: Sector[] = [
       { name: "[PLACEHOLDER] FMCG brand", country: "Ghana", note: "[PLACEHOLDER] National distribution" },
     ],
     icon: "agro",
+    image: "/images/sectors/agro-allied-fmcg.jpg",
   },
   {
     slug: "advisory-services",
@@ -174,6 +182,7 @@ export const sectors: Sector[] = [
       { name: "[PLACEHOLDER] Cross-border M&A", country: "Pan-African", note: "[PLACEHOLDER] Buy-side advisory" },
     ],
     icon: "advisory",
+    image: "/images/sectors/advisory-services.jpg",
   },
 ];
 

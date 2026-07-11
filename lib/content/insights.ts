@@ -12,6 +12,8 @@ export interface Insight {
   excerpt: string;
   author: string;
   body: string[];
+  /** Thematic photo under /public/images. */
+  image: string;
 }
 
 export const insights: Insight[] = [
@@ -29,6 +31,7 @@ export const insights: Insight[] = [
       "[PLACEHOLDER] Supporting analysis paragraph — what is changing structurally, and why it matters for long-term capital.",
       "[PLACEHOLDER] Closing paragraph connecting the theme back to Bethesda Group's positioning and portfolio.",
     ],
+    image: "/images/sectors/renewable-energy.jpg",
   },
   {
     slug: "diaspora-capital-formalising",
@@ -44,6 +47,7 @@ export const insights: Insight[] = [
       "[PLACEHOLDER] Analysis of what accessible, well-governed products unlock for both investors and recipient economies.",
       "[PLACEHOLDER] Closing paragraph on Bethesda Group's approach to serving individual and diaspora investors.",
     ],
+    image: "/images/diaspora.jpg",
   },
   {
     slug: "bethesda-expands-operations",
@@ -59,6 +63,7 @@ export const insights: Insight[] = [
       "[PLACEHOLDER] Supporting detail — sectors of focus in the new markets and local partnerships.",
       "[PLACEHOLDER] Executive quote and forward-looking statement.",
     ],
+    image: "/images/hero.jpg",
   },
   {
     slug: "healthcare-access-thesis",
@@ -74,6 +79,7 @@ export const insights: Insight[] = [
       "[PLACEHOLDER] Analysis of scalable, well-governed care and diagnostics models.",
       "[PLACEHOLDER] Closing paragraph on the group's healthcare portfolio and thesis.",
     ],
+    image: "/images/sectors/healthcare.jpg",
   },
   {
     slug: "ppp-infrastructure-note",
@@ -89,6 +95,7 @@ export const insights: Insight[] = [
       "[PLACEHOLDER] Analysis of governance and risk-allocation principles for durable PPPs.",
       "[PLACEHOLDER] Closing paragraph on Bethesda Group's advisory and co-investment role.",
     ],
+    image: "/images/sectors/real-estate-infrastructure.jpg",
   },
 ];
 

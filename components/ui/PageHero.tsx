@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface PageHeroProps {
@@ -8,17 +9,26 @@ interface PageHeroProps {
   children?: ReactNode;
   /** Institutional track uses the deeper muted accent tone. */
   accent?: "cognac" | "institutional";
+  /** Optional photo backdrop under /public. Falls back to a duotone field. */
+  image?: string;
 }
 
 /**
  * Shared inner-page hero on the navy field. Kept as a server component (no
- * animation dependency) so every route has a fast, consistent masthead.
+ * animation dependency) so every route has a fast, consistent masthead. When an
+ * `image` is supplied it renders behind strong navy gradients for legibility.
  */
-export function PageHero({ eyebrow, title, description, children, accent = "cognac" }: PageHeroProps) {
+export function PageHero({ eyebrow, title, description, children, accent = "cognac", image }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-navy pb-16 pt-32 md:pb-24 md:pt-44">
-      <div className="placeholder-duotone absolute inset-0 opacity-40" aria-hidden />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/80 to-navy/50" aria-hidden />
+      {image ? (
+        <Image src={image} alt="" fill priority sizes="100vw" className="object-cover" />
+      ) : (
+        <div className="placeholder-duotone absolute inset-0 opacity-40" aria-hidden />
+      )}
+      {/* Legibility overlays */}
+      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/85 to-navy/60" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/70 to-transparent" aria-hidden />
       <div className="container-content relative z-10">
         {eyebrow && (
           <p

@@ -57,7 +57,7 @@ export function InsightsList() {
               <Link href={`/insights/${insight.slug}`} className="group flex h-full flex-col" data-cursor="link">
                 <div className="overflow-hidden rounded-xl">
                   <div className="transition-transform duration-700 ease-editorial group-hover:scale-105">
-                    <PlaceholderImage label={`${insight.category} article`} aspect="aspect-[16/10]" />
+                    <PlaceholderImage src={insight.image} label={insight.title} aspect="aspect-[16/10]" />
                   </div>
                 </div>
                 <div className="mt-5 flex items-center gap-3">

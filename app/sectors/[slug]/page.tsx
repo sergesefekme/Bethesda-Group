@@ -31,7 +31,7 @@ export default function SectorDetailPage({ params }: { params: { slug: string } 
 
   return (
     <>
-      <PageHero eyebrow="Sector" title={sector.name} description={sector.summary}>
+      <PageHero eyebrow="Sector" title={sector.name} description={sector.summary} image={sector.image}>
         <div className="inline-flex items-center gap-3 rounded-full border border-offwhite/20 px-5 py-2.5 text-offwhite">
           <SectorIcon icon={sector.icon} className="h-5 w-5 text-cognac-light" />
           <span className="text-sm font-medium">{sector.tagline}</span>
@@ -76,7 +76,7 @@ export default function SectorDetailPage({ params }: { params: { slug: string } 
             {sector.notableProjects.map((project, i) => (
               <Reveal key={project.name} from="up" delay={i * 0.08}>
                 <div className="overflow-hidden rounded-2xl border border-offwhite/10 bg-navy-700/40">
-                  <PlaceholderImage label={`${sector.name} project`} aspect="aspect-[16/9]" rounded={false} />
+                  <PlaceholderImage src={sector.image} label={`${sector.name} project`} aspect="aspect-[16/9]" rounded={false} sizes="(max-width: 768px) 100vw, 50vw" />
                   <div className="p-7">
                     <div className="flex items-center gap-2 text-xs text-warmgray">
                       <span>{project.country}</span>

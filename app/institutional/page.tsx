@@ -55,6 +55,7 @@ export default function InstitutionalPage() {
       <PageHero
         eyebrow="Institutional Investors"
         accent="institutional"
+        image="/images/sectors/advisory-services.jpg"
         title={<>Regulatory-grade partnership for capital at scale</>}
         description="For governments, sovereign wealth funds and development-finance institutions seeking governance transparency and large-scale, well-structured deployment across African markets."
       >

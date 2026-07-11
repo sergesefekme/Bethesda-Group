@@ -115,9 +115,11 @@ Everything below is marked in code with `[PLACEHOLDER]` (copy/data) or
   currently stub `handleSubmit`. Wire to a real API route / form service / CRM.
 - **Production URL** — `lib/content/navigation.ts` (`siteConfig.url`) — used by canonical
   tags, sitemap and robots.
-- **Imagery** — replace `<PlaceholderImage />` usages with real photos via `next/image`;
-  see `public/images/README.md` for the filename map. A branded OG card is generated at
-  `app/opengraph-image.tsx` — swap for a designed image if preferred.
+- **Imagery** — real Unsplash photography (License: free, commercial-use) is now wired
+  in for the hero, all seven sectors, portfolio, insights, and the diaspora section;
+  files + credits are listed in `public/images/README.md`. Leadership portraits and
+  per-project photos still use the branded duotone placeholder — swap those in when real
+  assets exist. A branded OG card is generated at `app/opengraph-image.tsx`.
 - **Logo** — `components/layout/Logo.tsx` renders a text wordmark; swap for an SVG logo.
 
 ## Notes

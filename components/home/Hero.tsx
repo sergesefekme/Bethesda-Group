@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { DualCTA } from "@/components/ui/DualCTA";
 
@@ -18,8 +19,10 @@ export function Hero() {
 
   return (
     <section ref={ref} className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy">
-      {/* Parallax duotone backdrop — [PLACEHOLDER-IMAGE] cinematic pan-African hero */}
-      <motion.div style={{ y: bgY }} className="placeholder-duotone placeholder-grain absolute inset-0 scale-110" aria-hidden />
+      {/* Parallax photo backdrop — Lagos, Nigeria (aerial). Swap in public/images/hero.jpg */}
+      <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110" aria-hidden>
+        <Image src="/images/hero.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+      </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/30" aria-hidden />
       <div className="absolute inset-0 bg-gradient-to-r from-navy/80 to-transparent" aria-hidden />
 

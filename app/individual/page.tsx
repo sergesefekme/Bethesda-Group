@@ -30,6 +30,7 @@ export default function IndividualPage() {
     <>
       <PageHero
         eyebrow="Individual & Diaspora Investors"
+        image="/images/diaspora.jpg"
         title={<>Invest in home, from wherever you are</>}
         description="You left, but you never really left. We've built an accessible, well-governed way to put your capital to work in the markets you know best."
       >
@@ -100,7 +101,12 @@ export default function IndividualPage() {
       <section className="bg-navy py-24 md:py-32">
         <div className="container-content grid items-center gap-14 lg:grid-cols-2">
           <Reveal from="right">
-            <PlaceholderImage label="Diaspora investor and family, connection to home" aspect="aspect-[4/5]" />
+            <PlaceholderImage
+              src="/images/diaspora.jpg"
+              label="Diaspora investor, connection to home"
+              aspect="aspect-[4/5]"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </Reveal>
           <div>
             <SectionHeader

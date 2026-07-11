@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 
 const sectorName = (slug: string) => sectors.find((s) => s.slug === slug)?.name ?? slug;
+const sectorImage = (slug: string) => sectors.find((s) => s.slug === slug)?.image;
 
 /** Filterable portfolio grid — filter by sector and by country. */
 export function PortfolioGrid() {
@@ -68,7 +69,7 @@ export function PortfolioGrid() {
               <Link href={`/portfolio/${item.slug}`} className="group flex h-full flex-col" data-cursor="link">
                 <div className="overflow-hidden rounded-xl">
                   <div className="transition-transform duration-700 ease-editorial group-hover:scale-105">
-                    <PlaceholderImage label={`${item.name}`} aspect="aspect-[4/3]" />
+                    <PlaceholderImage src={sectorImage(item.sector)} label={item.name} aspect="aspect-[4/3]" />
                   </div>
                 </div>
                 <div className="mt-5 flex items-center gap-2">
