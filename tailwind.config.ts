@@ -11,11 +11,11 @@ const config: Config = {
       colors: {
         // Bethesda Group brand system — single source of truth.
         navy: {
-          DEFAULT: "#0A1B33", // primary backgrounds, headers, primary UI
-          900: "#060F1F",
-          800: "#0A1B33",
-          700: "#122744",
-          600: "#1B3358",
+          DEFAULT: "#1E3A5F", // primary backgrounds, headers, primary UI (lighter blue)
+          900: "#12263D",
+          800: "#1E3A5F",
+          700: "#274A75",
+          600: "#325A89",
         },
         cognac: {
           DEFAULT: "#A66A3D", // accent / CTA — used sparingly, never a dominant fill

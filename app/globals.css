@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --navy: #0a1b33;
-  --navy-900: #060f1f;
-  --navy-700: #122744;
+  --navy: #1e3a5f;
+  --navy-900: #12263d;
+  --navy-700: #274a75;
   --cognac: #a66a3d;
   --cognac-light: #c08a5e;
   --offwhite: #f7f4ef;
@@ -74,7 +74,7 @@
     background-image:
       radial-gradient(120% 120% at 20% 10%, rgba(166, 106, 61, 0.55) 0%, transparent 55%),
       radial-gradient(120% 120% at 90% 80%, rgba(62, 92, 116, 0.65) 0%, transparent 50%),
-      linear-gradient(135deg, #0a1b33 0%, #122744 55%, #1b3358 100%);
+      linear-gradient(135deg, #12263d 0%, #1e3a5f 55%, #325a89 100%);
   }
 
   .placeholder-grain::after {

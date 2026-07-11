@@ -58,7 +58,7 @@ across the whole site.
 
 | Token           | Hex        | Usage                                             |
 | --------------- | ---------- | ------------------------------------------------- |
-| `navy`          | `#0A1B33`  | Primary backgrounds, headers                      |
+| `navy`          | `#1E3A5F`  | Primary backgrounds, headers (lighter blue)       |
 | `cognac`        | `#A66A3D`  | Accent / CTAs — used sparingly                    |
 | `offwhite`      | `#F7F4EF`  | Warm base surface                                 |
 | `warmgray`      | `#C9C2B8`  | Secondary text / borders                          |
