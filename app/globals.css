@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0a1b33;
+  --navy-900: #060f1f;
+  --navy-700: #122744;
+  --cognac: #a66a3d;
+  --cognac-light: #c08a5e;
+  --offwhite: #f7f4ef;
+  --offwhite-dark: #ece7de;
+  --warmgray: #c9c2b8;
+  --institutional: #3e5c74;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--offwhite);
+    color: var(--navy);
+    font-feature-settings: "kern", "liga";
+  }
+
+  /* Editorial headline defaults */
+  h1,
+  h2,
+  h3 {
+    font-weight: 800;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-weight: 500;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users (accessibility) */
+  :focus-visible {
+    outline: 2px solid var(--cognac);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Hide the native cursor only on precise pointers where our custom cursor runs */
+  @media (hover: hover) and (pointer: fine) {
+    body.custom-cursor-active {
+      cursor: none;
+    }
+    body.custom-cursor-active a,
+    body.custom-cursor-active button {
+      cursor: none;
+    }
+  }
+
+  ::selection {
+    background-color: var(--cognac);
+    color: var(--offwhite);
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-6 md:px-10;
+  }
+
+  /* Duotone treatment used by PlaceholderImage — cinematic navy/cognac blocks */
+  .placeholder-duotone {
+    background-image:
+      radial-gradient(120% 120% at 20% 10%, rgba(166, 106, 61, 0.55) 0%, transparent 55%),
+      radial-gradient(120% 120% at 90% 80%, rgba(62, 92, 116, 0.65) 0%, transparent 50%),
+      linear-gradient(135deg, #0a1b33 0%, #122744 55%, #1b3358 100%);
+  }
+
+  .placeholder-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .link-underline {
+    background-image: linear-gradient(var(--cognac), var(--cognac));
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-underline:hover {
+    background-size: 100% 1.5px;
+  }
+}
+
+/* Respect users who prefer reduced motion: disable transitions/animations.
+   JS animation code also checks this media query before running GSAP timelines. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Thin, brand-tinted scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--offwhite-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--warmgray);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cognac);
+}
