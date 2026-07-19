@@ -43,10 +43,20 @@ All four currently point at `#`. Needs live URLs for:
 Both render as `mailto:` links on `/contact`; the general address also appears in
 the footer.
 
-> **Note:** the direct address was supplied as `gkodjo@bethesda**y**globalnetwork.com`.
-> That domain does not exist (no DNS, no MX) and mail to it would bounce, so the
-> spelling was corrected to match the live domain. Flag it if `gkodjo` genuinely
-> sits on a different domain.
+Phone: **703.977.2426** (`tel:+17039772426`), shown on `/contact` and in the footer.
+
+> ### ⚠ Action required: register `bethesdayglobalnetwork.com`
+>
+> A third address, `gkodjo@bethesda**y**globalnetwork.com` (note the "y"), is now
+> published on `/contact` at the owner's request.
+>
+> **As of 2026-07-19 that domain was unregistered** — no A, MX or NS records,
+> confirmed against a public resolver. **Mail sent to it bounces.** Anyone using
+> that link loses their message and gets a delivery failure.
+>
+> Register the domain and configure MX records to make it work. If that is not
+> going to happen, remove `directAlt` from `lib/content/offices.ts` and the
+> corresponding link in `app/contact/page.tsx`.
 
 ---
 

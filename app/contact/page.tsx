@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { InquiryForm } from "@/components/shared/InquiryForm";
-import { contactEmails, hasPrimaryOffice, primaryOffice } from "@/lib/content/offices";
+import { contactEmails, contactPhone, hasPrimaryOffice, primaryOffice } from "@/lib/content/offices";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -72,8 +72,28 @@ export default function ContactPage() {
                   >
                     {contactEmails.direct}
                   </a>
+                  <a
+                    href={`mailto:${contactEmails.directAlt}`}
+                    data-cursor="link"
+                    className="link-underline mt-1 block font-medium text-navy transition-colors hover:text-cognac"
+                  >
+                    {contactEmails.directAlt}
+                  </a>
                 </li>
               </ul>
+
+              <h2 className="mt-12 text-sm font-semibold uppercase tracking-[0.15em] text-cognac">
+                Phone
+              </h2>
+              <p className="mt-5 text-sm">
+                <a
+                  href={contactPhone.href}
+                  data-cursor="link"
+                  className="link-underline font-medium text-navy transition-colors hover:text-cognac"
+                >
+                  {contactPhone.label}
+                </a>
+              </p>
             </Reveal>
 
             <Reveal from="up" delay={0.12}>
