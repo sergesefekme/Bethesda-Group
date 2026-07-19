@@ -1,27 +1,21 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
+import { useFormSubmit } from "@/lib/useFormSubmit";
+import { FormError } from "@/components/shared/FormError";
 
 const fieldBase =
   "w-full rounded-lg border border-offwhite/20 bg-navy-700/60 px-4 py-3 text-sm text-offwhite placeholder:text-warmgray/50 transition-colors focus:border-cognac focus:outline-none";
 
 /**
  * Gated "Request Institutional Deck" form. The deck is not a public download —
- * on submit we capture the request and route it to the team.
- *
- * TODO(launch): `handleSubmit` is stubbed — no live sending. Wire to a real
- * endpoint; do not expose a direct PDF link. See CONTENT-NEEDED.md.
+ * on submit the request is routed to the team via /api/contact. The deck is
+ * never exposed as a direct PDF link.
  */
 export function GatedDeckForm() {
-  const [status, setStatus] = useState<"idle" | "success">("idle");
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("success");
-  }
+  const { status, error, mailtoHref, handleSubmit } = useFormSubmit("deck");
 
   if (status === "success") {
     return (
@@ -42,6 +36,18 @@ export function GatedDeckForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {status === "error" && <FormError message={error} mailtoHref={mailtoHref} tone="light" />}
+
+      {/* Honeypot */}
+      <input
+        type="text"
+        name="company_website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        className="hidden"
+      />
+
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-offwhite">Full name</span>
@@ -68,8 +74,8 @@ export function GatedDeckForm() {
         <p className="max-w-xs text-xs leading-relaxed text-warmgray/60">
           Shared under confidentiality with institutional and professional investors only.
         </p>
-        <Button type="submit" variant="primary">
-          Request the deck
+        <Button type="submit" variant="primary" disabled={status === "sending"}>
+          {status === "sending" ? "Sending…" : "Request the deck"}
         </Button>
       </div>
     </form>

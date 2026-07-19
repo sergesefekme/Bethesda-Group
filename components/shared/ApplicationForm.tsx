@@ -1,27 +1,18 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { openRoles } from "@/lib/content/careers";
+import { useFormSubmit } from "@/lib/useFormSubmit";
+import { FormError } from "@/components/shared/FormError";
 
 const fieldBase =
   "w-full rounded-lg border border-navy/15 bg-offwhite px-4 py-3 text-sm text-navy placeholder:text-navy/40 transition-colors focus:border-cognac focus:outline-none";
 
-/**
- * Candidate application / speculative CV submission.
- *
- * TODO(launch): `handleSubmit` is stubbed — no live sending. Wire to an API
- * route or ATS before launch, same as InquiryForm and GatedDeckForm.
- */
+/** Candidate application / speculative CV submission, sent via /api/contact. */
 export function ApplicationForm() {
-  const [status, setStatus] = useState<"idle" | "success">("idle");
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("success");
-  }
+  const { status, error, mailtoHref, handleSubmit } = useFormSubmit("application");
 
   if (status === "success") {
     return (
@@ -44,6 +35,18 @@ export function ApplicationForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {status === "error" && <FormError message={error} mailtoHref={mailtoHref} />}
+
+      {/* Honeypot */}
+      <input
+        type="text"
+        name="company_website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        className="hidden"
+      />
+
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium text-navy">Full name</span>
@@ -114,8 +117,8 @@ export function ApplicationForm() {
           We use the details you submit solely to assess your application and retain them for up to
           12 months.
         </p>
-        <Button type="submit" variant="primary">
-          Submit application
+        <Button type="submit" variant="primary" disabled={status === "sending"}>
+          {status === "sending" ? "Sending…" : "Submit application"}
         </Button>
       </div>
     </form>

@@ -95,10 +95,10 @@ Affected sections hide themselves until their data files are populated, so the s
 presentable in the meantime. Search the code for `TODO(content)` and `TODO(launch)`.
 
 ### Launch blockers
-- **All three forms are stubbed** — `InquiryForm`, `GatedDeckForm` and the new
-  `ApplicationForm` validate and show a success state but transmit nothing. Anyone who
-  submits will believe they made contact when they have not. Wire to an API route / form
-  service / CRM / ATS.
+- **Forms need one API key.** All three now post to `app/api/contact/route.ts` (Resend)
+  and fail honestly with a `mailto:` fallback rather than faking success. To switch
+  delivery on, set `RESEND_API_KEY` and `CONTACT_FROM` in the Amplify console — see
+  `.env.example` and `CONTENT-NEEDED.md` §4.
 - **Regulatory & custody claims are deliberately unwritten** — named regulators,
   registration numbers, client-fund custodians and investor protections. These must be
   verified, not drafted.

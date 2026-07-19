@@ -20,11 +20,14 @@ interface LinkButtonProps extends BaseProps {
   href: string;
   onClick?: never;
   type?: never;
+  disabled?: never;
 }
 interface ActionButtonProps extends BaseProps {
   href?: never;
   onClick?: () => void;
   type?: "button" | "submit";
+  /** Buttons only — used by forms while a submission is in flight. */
+  disabled?: boolean;
 }
 type ButtonProps = LinkButtonProps | ActionButtonProps;
 
@@ -46,6 +49,7 @@ export function Button({
   href,
   onClick,
   type = "button",
+  disabled,
 }: ButtonProps) {
   const ref = useRef<HTMLElement>(null);
   const x = useMotionValue(0);
@@ -71,6 +75,7 @@ export function Button({
   const classes = cn(
     "inline-flex items-center justify-center gap-2 transition-colors duration-300 ease-editorial text-sm md:text-base",
     variants[variant],
+    disabled && "cursor-not-allowed opacity-60",
     className
   );
 
@@ -96,6 +101,7 @@ export function Button({
       ref={ref as React.RefObject<HTMLButtonElement>}
       type={type}
       onClick={onClick}
+      disabled={disabled}
       className={classes}
       data-cursor="link"
       style={{ x: springX, y: springY }}

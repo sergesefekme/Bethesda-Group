@@ -166,11 +166,12 @@ investors. The commented-out block marks where it goes.
 
 ---
 
-## 4. Functional gaps — forms do not send
+## 4. Forms — wired, pending one API key
 
-**All three forms are stubbed.** They validate and show a success state, but
-nothing is transmitted or stored anywhere. A user who submits one will believe
-they have been in contact when they have not.
+All three forms now post to `app/api/contact/route.ts`, which sends via the
+Resend API. They no longer fake success: if delivery is not configured or fails,
+the visitor sees an error plus a direct `mailto:` link pre-filled with what they
+typed.
 
 | Form | File |
 | --- | --- |
@@ -178,9 +179,18 @@ they have been in contact when they have not.
 | Institutional deck request | `components/shared/GatedDeckForm.tsx` |
 | Careers application | `components/shared/ApplicationForm.tsx` |
 
-Each needs `handleSubmit` wired to an API route, form service or ATS before
-launch. This pre-dates the current pass for the first two; the third was added
-with it and follows the same pattern deliberately.
+**To switch delivery on** (see `.env.example`):
+
+1. Create an account at resend.com and verify `bethesdaglobalnetwork.com`.
+2. Generate an API key.
+3. In the AWS Amplify console → App settings → Environment variables, add:
+   - `RESEND_API_KEY` — the key
+   - `CONTACT_FROM` — a verified sender, e.g. `website@bethesdaglobalnetwork.com`
+   - `CONTACT_TO` — optional; defaults to `info@bethesdaglobalnetwork.com`
+4. Redeploy.
+
+Until then the forms fail honestly and point people at the email address, which
+is published on `/contact` and in the footer.
 
 ---
 

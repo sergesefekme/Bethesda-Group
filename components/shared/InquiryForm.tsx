@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
+import { useFormSubmit } from "@/lib/useFormSubmit";
+import { FormError } from "@/components/shared/FormError";
 
 type InquiryType = "Institutional" | "Individual" | "General / Media";
 
@@ -19,19 +21,11 @@ interface InquiryFormProps {
 
 /**
  * Segmented contact form (Institutional / Individual / General-Media).
- * Client-side validated.
- *
- * TODO(launch): `handleSubmit` is stubbed — no live sending. Wire to a real
- * endpoint or form service before launch. See CONTENT-NEEDED.md.
+ * Client-side validated; submits to /api/contact.
  */
 export function InquiryForm({ defaultType = "Institutional" }: InquiryFormProps) {
   const [type, setType] = useState<InquiryType>(defaultType);
-  const [status, setStatus] = useState<"idle" | "success">("idle");
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("success");
-  }
+  const { status, error, mailtoHref, handleSubmit } = useFormSubmit("enquiry");
 
   if (status === "success") {
     return (
@@ -51,7 +45,19 @@ export function InquiryForm({ defaultType = "Institutional" }: InquiryFormProps)
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6" noValidate={false}>
+    <form onSubmit={(e) => handleSubmit(e, { inquiryType: type })} className="space-y-6">
+      {status === "error" && <FormError message={error} mailtoHref={mailtoHref} />}
+
+      {/* Honeypot — hidden from people, tempting to bots. */}
+      <input
+        type="text"
+        name="company_website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        className="hidden"
+      />
+
       <fieldset>
         <legend className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-navy/60">
           I am enquiring as
@@ -108,8 +114,8 @@ export function InquiryForm({ defaultType = "Institutional" }: InquiryFormProps)
           We use your details only to respond to this enquiry and never share them with third
           parties.
         </p>
-        <Button type="submit" variant="primary">
-          Send enquiry
+        <Button type="submit" variant="primary" disabled={status === "sending"}>
+          {status === "sending" ? "Sending…" : "Send enquiry"}
         </Button>
       </div>
     </form>
