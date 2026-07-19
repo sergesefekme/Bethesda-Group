@@ -23,8 +23,8 @@ const config: Config = {
           dark: "#7C4418", // deep bronze — hover / pressed states
         },
         offwhite: {
-          DEFAULT: "#F7F4EF", // warm base — avoids clinical pure white against navy
-          dark: "#ECE7DE",
+          DEFAULT: "#FBF9F6", // warm base — bright enough to recede behind content
+          dark: "#F1EDE6",
         },
         warmgray: {
           DEFAULT: "#C9C2B8", // muted warm gray — secondary text / borders

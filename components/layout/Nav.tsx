@@ -26,14 +26,16 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-editorial",
-        scrolled ? "bg-offwhite/90 shadow-sm backdrop-blur-md" : "bg-transparent"
+        // The header keeps a light field at all times: the links are navy, and a
+        // transparent header put them navy-on-navy over the dark home hero.
+        "fixed inset-x-0 top-0 z-50 bg-offwhite/95 backdrop-blur-md transition-shadow duration-500 ease-editorial",
+        scrolled && "shadow-sm"
       )}
     >
-      <nav className="container-content flex h-16 items-center justify-between md:h-20" aria-label="Primary">
+      <nav className="container-content flex h-20 items-center gap-6 md:h-24" aria-label="Primary">
         <Logo />
 
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="hidden flex-1 items-center justify-center gap-x-10 lg:flex xl:gap-x-12">
           {primaryNav.map((link) => {
             const active = pathname === link.href || pathname.startsWith(link.href + "/");
             return (
@@ -42,8 +44,8 @@ export function Nav() {
                   href={link.href}
                   data-cursor="link"
                   className={cn(
-                    "link-underline text-sm font-medium transition-colors",
-                    active ? "text-cognac" : "text-navy/80 hover:text-navy"
+                    "link-underline whitespace-nowrap text-base font-medium transition-colors",
+                    active ? "text-cognac" : "text-navy hover:text-cognac"
                   )}
                 >
                   {link.label}
@@ -53,11 +55,11 @@ export function Nav() {
           })}
         </ul>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="ml-auto hidden items-center gap-4 lg:ml-0 lg:flex">
           <Link
             href="/contact"
             data-cursor="link"
-            className="rounded-full bg-navy px-6 py-2.5 text-sm font-medium text-offwhite transition-colors hover:bg-navy-700"
+            className="rounded-full bg-navy px-6 py-2.5 text-base font-medium text-offwhite transition-colors hover:bg-navy-700"
           >
             Contact
           </Link>
@@ -69,7 +71,7 @@ export function Nav() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
-          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+          className="relative z-50 ml-auto flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
           data-cursor="link"
         >
           <span className={cn("h-0.5 w-6 bg-navy transition-all duration-300", open && "translate-y-2 rotate-45")} />
@@ -92,7 +94,7 @@ export function Nav() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block border-b border-navy/5 py-3 text-lg font-medium text-navy"
+                    className="block border-b border-navy/10 py-3.5 text-lg font-medium text-navy"
                   >
                     {link.label}
                   </Link>
@@ -101,7 +103,7 @@ export function Nav() {
               <li className="mt-4">
                 <Link
                   href="/contact"
-                  className="block rounded-full bg-navy px-6 py-3 text-center text-sm font-medium text-offwhite"
+                  className="block rounded-full bg-navy px-6 py-3 text-center text-base font-medium text-offwhite"
                 >
                   Contact
                 </Link>

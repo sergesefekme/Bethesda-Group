@@ -22,13 +22,33 @@ export function PageHero({ eyebrow, title, description, children, accent = "cogn
   return (
     <section className="relative overflow-hidden bg-navy pb-16 pt-32 md:pb-24 md:pt-44">
       {image ? (
-        <Image src={image} alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image
+          src={image}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover brightness-110 contrast-105"
+        />
       ) : (
-        <div className="placeholder-duotone absolute inset-0 opacity-40" aria-hidden />
+        <div className="placeholder-duotone absolute inset-0 opacity-90" aria-hidden />
       )}
-      {/* Legibility overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/85 to-navy/60" aria-hidden />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/70 to-transparent" aria-hidden />
+      {/* Legibility overlays. Over a photo they stay light so the image reads;
+          over the duotone field they hold the deeper brand navy. */}
+      <div
+        className={cn(
+          "absolute inset-0 bg-gradient-to-t",
+          image ? "from-navy/90 via-navy/60 to-navy/30" : "from-navy via-navy/80 to-navy/60"
+        )}
+        aria-hidden
+      />
+      <div
+        className={cn(
+          "absolute inset-0 bg-gradient-to-r",
+          image ? "from-navy/85 via-navy/35 to-transparent" : "from-navy/70 to-transparent"
+        )}
+        aria-hidden
+      />
       <div className="container-content relative z-10">
         {eyebrow && (
           <p
