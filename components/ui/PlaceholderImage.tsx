@@ -58,12 +58,9 @@ export function PlaceholderImage({
           )}
         </>
       ) : (
-        <div className="absolute inset-0 flex items-end p-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-navy-900/50 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-warmgray backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-cognac" />
-            [PLACEHOLDER-IMAGE] {label}
-          </span>
-        </div>
+        // No image supplied: fall back to the duotone field alone, with no
+        // visible marker chip. `label` still describes the slot for a11y.
+        <span className="sr-only">{label}</span>
       )}
     </div>
   );

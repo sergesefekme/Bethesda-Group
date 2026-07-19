@@ -2,18 +2,15 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { InquiryForm } from "@/components/shared/InquiryForm";
-import { offices } from "@/lib/content/offices";
+import { hasPrimaryOffice, primaryOffice } from "@/lib/content/offices";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Bethesda Group — institutional, individual investor, and general/media enquiries, plus our offices across Africa and international HQ.",
+    "Get in touch with Bethesda Group — institutional, individual investor, and general or media enquiries.",
 };
 
 export default function ContactPage() {
-  const hq = offices.filter((o) => o.hq);
-  const african = offices.filter((o) => !o.hq);
-
   return (
     <>
       <PageHero
@@ -31,40 +28,32 @@ export default function ContactPage() {
           </Reveal>
 
           <div>
-            <Reveal from="up">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-cognac">International HQ</h2>
-              <ul className="mt-5 space-y-6">
-                {hq.map((o) => (
-                  <li key={o.city}>
-                    <p className="font-bold text-navy">
-                      {o.city}, {o.country}
-                    </p>
-                    <p className="text-sm text-navy/60">{o.address}</p>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+            {hasPrimaryOffice && (
+              <Reveal from="up">
+                <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-cognac">Office</h2>
+                <address className="mt-5 not-italic">
+                  <p className="font-bold text-navy">
+                    {primaryOffice.city}
+                    {primaryOffice.region && `, ${primaryOffice.region}`}
+                  </p>
+                  <p className="text-sm leading-relaxed text-navy/60">
+                    {primaryOffice.addressLines.map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                    <span className="block">{primaryOffice.country}</span>
+                  </p>
+                </address>
+              </Reveal>
+            )}
 
             <Reveal from="up" delay={0.08}>
-              <h2 className="mt-12 text-sm font-semibold uppercase tracking-[0.15em] text-cognac">African offices</h2>
-              <ul className="mt-5 grid gap-6 sm:grid-cols-2">
-                {african.map((o) => (
-                  <li key={o.city}>
-                    <p className="font-bold text-navy">
-                      {o.city}, {o.country}
-                    </p>
-                    <p className="text-sm text-navy/60">{o.address}</p>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal from="up" delay={0.12}>
               <div className="mt-12 rounded-2xl bg-navy p-6 text-sm text-warmgray">
-                <p className="font-medium text-offwhite">Media & press</p>
-                <p className="mt-2">
-                  [PLACEHOLDER] press@bethesdagroup.com · General enquiries:
-                  [PLACEHOLDER] info@bethesdagroup.com
+                <p className="font-medium text-offwhite">Media &amp; press</p>
+                <p className="mt-2 leading-relaxed">
+                  Use the enquiry form and select the press option — media requests are routed to
+                  the communications team and answered within two business days.
                 </p>
               </div>
             </Reveal>

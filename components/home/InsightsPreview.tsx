@@ -9,9 +9,13 @@ function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
 
-/** Three-card featured insights preview for the home page. */
+/**
+ * Three-card featured insights preview for the home page. Hidden entirely while
+ * nothing is published, rather than showing an empty section.
+ */
 export function InsightsPreview() {
   const featured = insights.slice(0, 3);
+  if (featured.length === 0) return null;
 
   return (
     <section className="bg-offwhite py-24 md:py-32">
@@ -46,7 +50,6 @@ export function InsightsPreview() {
                   {insight.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-navy/60">{insight.excerpt}</p>
-                <span className="mt-4 text-xs text-navy/40">{insight.readingTime} read</span>
               </Link>
             </Reveal>
           ))}

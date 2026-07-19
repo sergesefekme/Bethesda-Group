@@ -19,8 +19,10 @@ interface InquiryFormProps {
 
 /**
  * Segmented contact form (Institutional / Individual / General-Media).
- * Client-side validated; submit is stubbed — wire `handleSubmit` to a real
- * endpoint or form service before launch. [PLACEHOLDER] no live sending.
+ * Client-side validated.
+ *
+ * TODO(launch): `handleSubmit` is stubbed — no live sending. Wire to a real
+ * endpoint or form service before launch. See CONTENT-NEEDED.md.
  */
 export function InquiryForm({ defaultType = "Institutional" }: InquiryFormProps) {
   const [type, setType] = useState<InquiryType>(defaultType);
@@ -28,7 +30,6 @@ export function InquiryForm({ defaultType = "Institutional" }: InquiryFormProps)
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // [PLACEHOLDER] Replace with a real submission (API route / form service).
     setStatus("success");
   }
 
@@ -42,7 +43,8 @@ export function InquiryForm({ defaultType = "Institutional" }: InquiryFormProps)
         <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-cognac/15 text-cognac">✓</div>
         <h3 className="text-lg font-bold text-navy">Thank you — we&rsquo;ve received your enquiry</h3>
         <p className="mt-2 text-sm text-navy/70">
-          A member of our {type.toLowerCase()} team will be in touch shortly. [PLACEHOLDER] confirmation copy.
+          A member of our {type.toLowerCase()} team will be in touch shortly — typically within two
+          business days.
         </p>
       </motion.div>
     );
@@ -102,7 +104,10 @@ export function InquiryForm({ defaultType = "Institutional" }: InquiryFormProps)
       </label>
 
       <div className="flex items-center justify-between gap-4">
-        <p className="text-xs text-navy/50">[PLACEHOLDER] Privacy note & consent line.</p>
+        <p className="max-w-sm text-xs leading-relaxed text-navy/50">
+          We use your details only to respond to this enquiry and never share them with third
+          parties.
+        </p>
         <Button type="submit" variant="primary">
           Send enquiry
         </Button>

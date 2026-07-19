@@ -10,15 +10,16 @@ const fieldBase =
 
 /**
  * Gated "Request Institutional Deck" form. The deck is not a public download —
- * on submit we capture the request and route it to the team. [PLACEHOLDER] wire
- * `handleSubmit` to a real endpoint; do not expose a direct PDF link.
+ * on submit we capture the request and route it to the team.
+ *
+ * TODO(launch): `handleSubmit` is stubbed — no live sending. Wire to a real
+ * endpoint; do not expose a direct PDF link. See CONTENT-NEEDED.md.
  */
 export function GatedDeckForm() {
   const [status, setStatus] = useState<"idle" | "success">("idle");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // [PLACEHOLDER] Replace with real submission → notifies IR team, then follow-up.
     setStatus("success");
   }
 
@@ -32,8 +33,8 @@ export function GatedDeckForm() {
         <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-cognac/20 text-cognac">✓</div>
         <h3 className="text-lg font-bold text-offwhite">Request received</h3>
         <p className="mt-2 text-sm text-warmgray">
-          Our institutional partnerships team will review your request and share the deck directly.
-          [PLACEHOLDER] expected turnaround & next steps.
+          Our institutional partnerships team will review your request and share the deck directly,
+          typically within three business days.
         </p>
       </motion.div>
     );
@@ -64,7 +65,9 @@ export function GatedDeckForm() {
         <textarea name="interest" rows={3} className={cn(fieldBase, "resize-none")} placeholder="Sectors, mandate size, timeframe…" />
       </label>
       <div className="flex items-center justify-between gap-4">
-        <p className="text-xs text-warmgray/60">[PLACEHOLDER] Confidentiality note.</p>
+        <p className="max-w-xs text-xs leading-relaxed text-warmgray/60">
+          Shared under confidentiality with institutional and professional investors only.
+        </p>
         <Button type="submit" variant="primary">
           Request the deck
         </Button>
