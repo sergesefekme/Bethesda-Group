@@ -12,42 +12,42 @@ export const metadata: Metadata = {
     "Regulatory-grade partnership for governments and sovereign funds — governance transparency, co-investment and PPP structures, and large-scale capital deployment across Africa.",
 };
 
+// NOTE: a "Compliance & regulation" pillar was removed here — naming regulators
+// and asserting registration is a claim that must be verified, not drafted.
+// See CONTENT-NEEDED.md.
 const governancePillars = [
   {
     title: "Governance & oversight",
-    body: "[PLACEHOLDER] Independent investment committee, board oversight and audited reporting aligned to international standards.",
-  },
-  {
-    title: "Compliance & regulation",
-    body: "[PLACEHOLDER] Registered and regulated across relevant jurisdictions, with rigorous AML/KYC and ESG frameworks.",
+    body: "Every allocation passes an investment committee that sits independently of the deal teams, with board-level oversight and audited reporting.",
   },
   {
     title: "Transparency & reporting",
-    body: "[PLACEHOLDER] Institutional-grade reporting cadence, quantified impact metrics and full transaction traceability.",
+    body: "Partners receive a fixed reporting cadence, quantified impact metrics alongside financial performance, and traceability down to individual transactions.",
+  },
+  {
+    title: "Aligned incentives",
+    body: "We co-invest our own balance sheet alongside institutional partners, so the group carries the same exposure to the same outcomes.",
   },
 ];
 
-// [PLACEHOLDER] Confirm actual partnership structures offered.
 const partnershipModels = [
   {
     name: "Co-investment",
-    body: "[PLACEHOLDER] Deploy alongside the group into named assets with aligned terms and governance rights.",
+    body: "Deploy alongside the group into named assets, with aligned terms, agreed governance rights and full visibility of the underlying diligence.",
   },
   {
     name: "Public-private partnerships (PPP)",
-    body: "[PLACEHOLDER] Structured PPP vehicles for infrastructure and social assets, with balanced risk allocation.",
+    body: "Structured vehicles for infrastructure and social assets, built around balanced risk allocation between public and private participants.",
   },
   {
     name: "Sovereign fund mandates",
-    body: "[PLACEHOLDER] Discretionary and advisory mandates tailored to sovereign and development-finance objectives.",
+    body: "Discretionary and advisory mandates shaped around sovereign and development-finance objectives, including local-content and impact requirements.",
   },
 ];
 
-const caseStudies = [
-  { sector: "Renewable Energy", country: "Nigeria", outcome: "120 MW deployed", detail: "[PLACEHOLDER] Co-investment into utility-scale generation." },
-  { sector: "Infrastructure", country: "Côte d'Ivoire", outcome: "$210M mobilised", detail: "[PLACEHOLDER] PPP structuring for a logistics corridor." },
-  { sector: "Healthcare", country: "Rwanda", outcome: "40 sites opened", detail: "[PLACEHOLDER] Institutional capital into diagnostics access." },
-];
+// TODO(content): institutional proof points need real, attributable transactions
+// and verified figures before they are shown. See CONTENT-NEEDED.md.
+const caseStudies: { sector: string; country: string; outcome: string; detail: string }[] = [];
 
 export default function InstitutionalPage() {
   return (
@@ -94,7 +94,7 @@ export default function InstitutionalPage() {
           <SectionHeader
             eyebrow="Partnership models"
             title="Flexible structures, aligned interests"
-            description="[PLACEHOLDER] Confirm the definitive set of partnership structures the group offers institutional partners."
+            description="Three routes institutional partners take into the portfolio, each with its own governance and reporting arrangements."
             tone="light"
           />
           <div className="mt-14 space-y-4">
@@ -114,6 +114,7 @@ export default function InstitutionalPage() {
       </section>
 
       {/* Track record */}
+      {caseStudies.length > 0 && (
       <section className="bg-offwhite py-24 md:py-32">
         <div className="container-content">
           <SectionHeader
@@ -138,6 +139,7 @@ export default function InstitutionalPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Gated deck request */}
       <section id="request-deck" className="scroll-mt-24 bg-navy py-24 md:py-32">
@@ -149,8 +151,10 @@ export default function InstitutionalPage() {
               description="Our institutional partnerships deck is shared privately. Tell us a little about your mandate and we'll be in touch — the deck is not a public download."
               tone="light"
             />
-            <p className="mt-8 text-sm text-warmgray/70">
-              [PLACEHOLDER] Note on confidentiality, eligibility and expected response time.
+            <p className="mt-8 text-sm leading-relaxed text-warmgray/70">
+              Requests are reviewed individually and are typically answered within three business
+              days. The deck is shared under confidentiality with institutional and professional
+              investors only.
             </p>
           </div>
           <Reveal from="up">

@@ -34,7 +34,14 @@ insight articles (by theme). Insight → image mapping lives in
   institutional-lead, diaspora-lead`, then pass `src` in the grid.
 - **Per-project / per-company photos** — sector pages and portfolio currently reuse the
   sector image. Swap in project-specific photos when available.
-- **Logo** — `components/layout/Logo.tsx` is a text wordmark; add `logo.svg` here.
+- **Logo** — `logo.jpeg` is the supplied brand artwork, but it is a 363×411 screenshot:
+  opaque white background, rounded border, and the words baked into the pixels. Two
+  consequences. (1) `components/layout/Logo.tsx` shows only the circular mark, cropped out
+  by the `.logo-mark` rule in `app/globals.css` — the crop is inset past the square's true
+  edge so the white border does not show as a hairline on the navy footer. (2) The artwork
+  reads **"Bethesda Global"** while the site is **"Bethesda Group"**; the wordmark is
+  therefore kept as real text and the image's text is cropped away. Replacing this with an
+  SVG of the mark would render crisply at any size and let the crop rule be deleted.
 
 When adding remote-hosted images instead, allowlist the host in `next.config.mjs`
 under `images.remotePatterns`.

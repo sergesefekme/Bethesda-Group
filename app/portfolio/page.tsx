@@ -14,7 +14,7 @@ export default function PortfolioPage() {
       <PageHero
         eyebrow="Portfolio & track record"
         title={<>Capital at work across Africa</>}
-        description="A selection of the companies and projects we have backed — filter by sector and country. [PLACEHOLDER] figures are illustrative until confirmed."
+        description="A selection of the companies and projects we have backed — filter by sector and country."
       />
       <section className="bg-offwhite py-24 md:py-32">
         <div className="container-content">

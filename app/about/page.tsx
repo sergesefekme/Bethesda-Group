@@ -4,6 +4,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { LeadershipGrid } from "@/components/about/LeadershipGrid";
 import { Timeline } from "@/components/about/Timeline";
+import { leadership, milestones } from "@/lib/content/leadership";
 
 export const metadata: Metadata = {
   title: "About",
@@ -34,10 +35,17 @@ export default function AboutPage() {
           <Reveal from="up" delay={0.1}>
             <div className="space-y-5 text-navy/70">
               <p className="text-lg">
-                [PLACEHOLDER] A substantive mission statement grounded in the group&rsquo;s actual strategy and values — measured, credible, specific to African markets.
+                Africa&rsquo;s growth sectors do not lack opportunity; they lack capital willing to
+                stay. We invest on a horizon measured in years, pairing patient funding with the
+                operational and technical support that turns a promising business into a durable
+                one.
               </p>
               <p>
-                [PLACEHOLDER] A vision paragraph describing the future the group is working towards and the role of both institutional and individual investors in reaching it.
+                We work at both ends of the market — alongside institutions allocating at scale, and
+                alongside individual and diaspora investors who have long been under-served by
+                formal channels. The same governance, diligence and reporting standards apply to
+                both. Building that shared infrastructure is how the next era of African investment
+                gets funded.
               </p>
             </div>
           </Reveal>
@@ -45,29 +53,33 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section id="leadership" className="scroll-mt-24 bg-offwhite-dark/40 py-24 md:py-32">
-        <div className="container-content">
-          <SectionHeader
-            eyebrow="Leadership"
-            title="The people behind the group"
-            description="[PLACEHOLDER] Replace with the real leadership team — names, titles and biographies. Select a card to read more."
-          />
-          <LeadershipGrid />
-        </div>
-      </section>
+      {leadership.length > 0 && (
+        <section id="leadership" className="scroll-mt-24 bg-offwhite-dark/40 py-24 md:py-32">
+          <div className="container-content">
+            <SectionHeader
+              eyebrow="Leadership"
+              title="The people behind the group"
+              description="Select a card to read more about each member of the leadership team."
+            />
+            <LeadershipGrid />
+          </div>
+        </section>
+      )}
 
       {/* Timeline */}
-      <section className="bg-navy py-24 md:py-32">
-        <div className="container-content">
-          <SectionHeader
-            eyebrow="Milestones"
-            title="Our journey so far"
-            description="[PLACEHOLDER] Replace with real, dated milestones from the group's history."
-            tone="light"
-          />
-          <Timeline />
-        </div>
-      </section>
+      {milestones.length > 0 && (
+        <section className="bg-navy py-24 md:py-32">
+          <div className="container-content">
+            <SectionHeader
+              eyebrow="Milestones"
+              title="Our journey so far"
+              description="The moments that shaped how the group invests today."
+              tone="light"
+            />
+            <Timeline />
+          </div>
+        </section>
+      )}
     </>
   );
 }

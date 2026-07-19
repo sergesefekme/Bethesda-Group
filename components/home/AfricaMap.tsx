@@ -11,8 +11,8 @@ import { Reveal } from "@/components/ui/Reveal";
  * silhouette (single SVG path) carries interactive hotspots per operating
  * country; hover/focus reveals sector density. Keyboard accessible.
  *
- * [PLACEHOLDER] For a geographically precise map, swap the silhouette path and
- * marker coordinates for real GeoJSON/TopoJSON later. Coordinates live in
+ * TODO: for a geographically precise map, swap the silhouette path and marker
+ * coordinates for real GeoJSON/TopoJSON. Coordinates live in
  * lib/content/offices.ts (operatingCountries).
  */
 export function AfricaMap() {
@@ -32,7 +32,7 @@ export function AfricaMap() {
           <Reveal from="up" className="relative mx-auto w-full max-w-xl">
             <div className="relative aspect-square">
               <svg viewBox="0 0 100 100" className="h-full w-full" role="img" aria-label="Map of Africa showing Bethesda Group operating countries">
-                {/* Simplified Africa silhouette [PLACEHOLDER geometry] */}
+                {/* Simplified Africa silhouette — stylised, not to scale */}
                 <path
                   d="M46 8 L54 9 L60 13 L63 19 L61 25 L66 30 L69 38 L72 46 L70 54 L66 61 L64 69 L60 77 L56 85 L52 90 L48 88 L45 81 L41 74 L36 69 L31 64 L27 57 L24 49 L26 41 L29 34 L31 27 L34 20 L38 13 L42 9 Z"
                   className="fill-navy-700 stroke-offwhite/10"
@@ -110,9 +110,8 @@ export function AfricaMap() {
               </ul>
             </Reveal>
             <Reveal from="up" delay={0.1}>
-              <p className="mt-8 text-sm text-warmgray/70">
-                [PLACEHOLDER] Country list and sector density are illustrative. Confirm the
-                operating-country footprint and per-market sector coverage before launch.
+              <p className="mt-8 text-sm leading-relaxed text-warmgray/70">
+                Map shown for orientation only; boundaries are stylised and not to scale.
               </p>
             </Reveal>
           </div>

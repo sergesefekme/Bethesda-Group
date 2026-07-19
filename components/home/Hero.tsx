@@ -21,10 +21,19 @@ export function Hero() {
     <section ref={ref} className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy">
       {/* Parallax photo backdrop — Lagos, Nigeria (aerial). Swap in public/images/hero.jpg */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110" aria-hidden>
-        <Image src="/images/hero.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image
+          src="/images/hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover brightness-110 contrast-105"
+        />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/30" aria-hidden />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/80 to-transparent" aria-hidden />
+      {/* Legibility scrims. The horizontal one is weighted to the left, where the
+          copy sits, and falls away by mid-frame so the skyline still reads. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/40 to-navy/10" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/35 to-transparent" aria-hidden />
 
       <motion.div style={{ y: contentY, opacity }} className="container-content relative z-10 pt-24">
         <motion.p

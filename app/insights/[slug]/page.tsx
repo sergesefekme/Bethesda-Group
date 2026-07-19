@@ -15,8 +15,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const insight = getInsight(params.slug);
   if (!insight) return {};
   return {
-    title: insight.title.replace(/^\[PLACEHOLDER\]\s*/, ""),
-    description: insight.excerpt.replace(/^\[PLACEHOLDER\]\s*/, ""),
+    title: insight.title,
+    description: insight.excerpt,
     openGraph: { type: "article", publishedTime: insight.date },
   };
 }
@@ -38,8 +38,6 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           <span>{insight.author}</span>
           <span aria-hidden>·</span>
           <span>{formatDate(insight.date)}</span>
-          <span aria-hidden>·</span>
-          <span>{insight.readingTime} read</span>
         </div>
       </PageHero>
 
@@ -56,13 +54,15 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             ))}
           </div>
 
-          <div className="mt-12 border-t border-navy/10 pt-8 text-sm text-navy/50">
-            [PLACEHOLDER] Author bio, disclosures and sharing.
+          <div className="mt-12 border-t border-navy/10 pt-8 text-sm leading-relaxed text-navy/50">
+            Written by {insight.author}. The views expressed are those of the author at the time of
+            publication and do not constitute investment advice.
           </div>
         </div>
       </article>
 
       {/* Related */}
+      {more.length > 0 && (
       <section className="bg-offwhite-dark/40 py-20 md:py-24">
         <div className="container-content">
           <h2 className="text-title font-extrabold text-navy">More insights</h2>
@@ -82,6 +82,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+      )}
     </>
   );
 }

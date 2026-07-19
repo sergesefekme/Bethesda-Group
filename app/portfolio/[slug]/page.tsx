@@ -16,7 +16,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const item = getPortfolioItem(params.slug);
   if (!item) return {};
-  return { title: item.name, description: item.summary.replace(/^\[PLACEHOLDER\]\s*/, "") };
+  return { title: item.name, description: item.summary };
 }
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
@@ -49,9 +49,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <div className="mt-10 space-y-5">
                 <h2 className="text-title font-extrabold text-navy">Overview</h2>
                 <p className="text-lg leading-relaxed text-navy/70">{item.overview}</p>
-                <p className="text-navy/70">
-                  [PLACEHOLDER] Additional case-study narrative — the challenge, the group&rsquo;s role, value creation levers, and outcomes to date.
-                </p>
               </div>
             </Reveal>
           </div>

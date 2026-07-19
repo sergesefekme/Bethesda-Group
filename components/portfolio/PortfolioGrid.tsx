@@ -26,6 +26,23 @@ export function PortfolioGrid() {
     (p) => (sector === "all" || p.sector === sector) && (country === "all" || p.country === country)
   );
 
+  // Nothing published yet: show a plain message rather than empty filter rails.
+  if (portfolio.length === 0) {
+    return (
+      <div className="rounded-3xl border border-navy/10 bg-offwhite-dark/40 p-10 text-center md:p-14">
+        <p className="text-title font-extrabold text-navy">Case studies coming soon</p>
+        <p className="mx-auto mt-4 max-w-lg leading-relaxed text-navy/60">
+          We&rsquo;re preparing detailed write-ups of the companies and projects behind the
+          portfolio. In the meantime, our{" "}
+          <Link href="/sectors" className="text-cognac link-underline" data-cursor="link">
+            sector pages
+          </Link>{" "}
+          set out where and how we invest.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div>
       {/* Filters */}

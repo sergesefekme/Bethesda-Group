@@ -1,5 +1,5 @@
-// [PLACEHOLDER] Key metrics for the animated counters strip. Replace every value
-// with audited figures before launch. `prefix`/`suffix` render around the number.
+// Key metrics for the animated counters strip. `prefix`/`suffix` render around
+// the number. The strip hides itself entirely while this list is empty.
 
 export interface Metric {
   label: string;
@@ -10,10 +10,6 @@ export interface Metric {
   decimals?: number;
 }
 
-export const metrics: Metric[] = [
-  { label: "Assets under management", value: 2.4, prefix: "$", suffix: "B", decimals: 1 }, // [PLACEHOLDER]
-  { label: "Countries of operation", value: 14, suffix: "" }, // [PLACEHOLDER]
-  { label: "Investment sectors", value: 7, suffix: "" },
-  { label: "Years of operation", value: 12, suffix: "+" }, // [PLACEHOLDER]
-  { label: "Portfolio companies", value: 38, suffix: "+" }, // [PLACEHOLDER]
-];
+// TODO(content): every figure here must be an audited number before it goes
+// live. See CONTENT-NEEDED.md for the list previously shown as placeholders.
+export const metrics: Metric[] = [];

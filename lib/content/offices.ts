@@ -1,25 +1,26 @@
-// [PLACEHOLDER] Office locations. Replace with real addresses before launch.
-// `hq: true` marks the international headquarters.
+// Primary office location.
 
 export interface Office {
   city: string;
+  region: string;
   country: string;
-  region: "International HQ" | "Africa";
-  address: string;
-  hq?: boolean;
+  addressLines: string[];
 }
 
-export const offices: Office[] = [
-  { city: "[PLACEHOLDER] London", country: "United Kingdom", region: "International HQ", address: "[PLACEHOLDER] Address line, Postcode", hq: true },
-  { city: "[PLACEHOLDER] Lagos", country: "Nigeria", region: "Africa", address: "[PLACEHOLDER] Address line" },
-  { city: "[PLACEHOLDER] Nairobi", country: "Kenya", region: "Africa", address: "[PLACEHOLDER] Address line" },
-  { city: "[PLACEHOLDER] Johannesburg", country: "South Africa", region: "Africa", address: "[PLACEHOLDER] Address line" },
-  { city: "[PLACEHOLDER] Accra", country: "Ghana", region: "Africa", address: "[PLACEHOLDER] Address line" },
-];
+// TODO(content): replace with the real primary address. See CONTENT-NEEDED.md.
+export const primaryOffice: Office = {
+  city: "",
+  region: "",
+  country: "",
+  addressLines: [],
+};
 
-// [PLACEHOLDER] Countries of operation, used by the home AfricaMap hotspots.
-// `x`/`y` are percentage coordinates on the stylised map (0–100). Adjust when
-// finalising the operating-country list; `sectorCount` drives density on hover.
+/** True once the address above has been filled in. */
+export const hasPrimaryOffice = Boolean(primaryOffice.city && primaryOffice.country);
+
+// Countries of operation, used by the home AfricaMap hotspots. `x`/`y` are
+// percentage coordinates on the stylised map (0–100); `sectorCount` drives
+// density on hover.
 export interface OperatingCountry {
   name: string;
   x: number;

@@ -19,7 +19,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!sector) return {};
   return {
     title: sector.name,
-    description: sector.summary.replace(/^\[PLACEHOLDER\]\s*/, ""),
+    description: sector.summary,
   };
 }
 
@@ -64,12 +64,13 @@ export default function SectorDetailPage({ params }: { params: { slug: string } 
       </section>
 
       {/* Notable projects */}
+      {sector.notableProjects.length > 0 && (
       <section className="bg-navy py-24 md:py-32">
         <div className="container-content">
           <SectionHeader
             eyebrow="Notable projects"
             title="Selected activity in this sector"
-            description="[PLACEHOLDER] Replace with real, referenceable projects and their outcomes."
+            description="A sample of the assets and businesses we back in this vertical."
             tone="light"
           />
           <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -106,6 +107,7 @@ export default function SectorDetailPage({ params }: { params: { slug: string } 
           )}
         </div>
       </section>
+      )}
 
       {/* CTA */}
       <section className="bg-offwhite py-20 md:py-24">
