@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { footerNav, siteConfig } from "@/lib/content/navigation";
-import { offices } from "@/lib/content/offices";
+import { hasPrimaryOffice, primaryOffice } from "@/lib/content/offices";
+import { SocialIcons } from "@/components/ui/SocialIcons";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -15,6 +16,7 @@ export function Footer() {
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-warmgray">
               {siteConfig.description}
             </p>
+            <SocialIcons className="mt-7 flex items-center gap-3" />
           </div>
 
           {footerNav.map((col) => (
@@ -39,29 +41,32 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 border-t border-offwhite/10 pt-10">
-          <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-cognac-light">Offices</h3>
-          <ul className="mt-5 grid gap-x-8 gap-y-3 text-sm text-warmgray sm:grid-cols-2 lg:grid-cols-5">
-            {offices.map((office) => (
-              <li key={office.city}>
-                <span className="font-medium text-offwhite">{office.city}</span>
-                <span className="block text-xs">
-                  {office.country}
-                  {office.hq && " · HQ"}
+        {hasPrimaryOffice && (
+          <div className="mt-14 border-t border-offwhite/10 pt-10">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-cognac-light">Office</h3>
+            <address className="mt-5 text-sm not-italic text-warmgray">
+              <span className="font-medium text-offwhite">
+                {primaryOffice.city}
+                {primaryOffice.region && `, ${primaryOffice.region}`}
+              </span>
+              {primaryOffice.addressLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
                 </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+              ))}
+              <span className="block">{primaryOffice.country}</span>
+            </address>
+          </div>
+        )}
 
         <div className="mt-12 flex flex-col gap-4 border-t border-offwhite/10 pt-8 text-xs text-warmgray md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {siteConfig.name}. All rights reserved.{" "}
-            <span className="text-warmgray/70">[PLACEHOLDER] Registered company details.</span>
+            © {year} {siteConfig.name}. All rights reserved.
           </p>
           <p className="max-w-xl text-warmgray/70">
-            [PLACEHOLDER] Regulatory disclosure. Investments carry risk, including loss of capital.
-            This site is for information only and is not investment advice.
+            Investments carry risk, including the loss of capital. Past performance is not a
+            reliable indicator of future results. This site is for information only and does not
+            constitute investment advice, an offer to sell, or a solicitation to buy any security.
           </p>
         </div>
       </div>
