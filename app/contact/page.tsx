@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { InquiryForm } from "@/components/shared/InquiryForm";
-import { hasPrimaryOffice, primaryOffice } from "@/lib/content/offices";
+import { contactEmails, hasPrimaryOffice, primaryOffice } from "@/lib/content/offices";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -49,11 +49,46 @@ export default function ContactPage() {
             )}
 
             <Reveal from="up" delay={0.08}>
+              <h2 className="mt-12 text-sm font-semibold uppercase tracking-[0.15em] text-cognac">
+                Email
+              </h2>
+              <ul className="mt-5 space-y-3 text-sm">
+                <li>
+                  <span className="block text-navy/50">General enquiries</span>
+                  <a
+                    href={`mailto:${contactEmails.general}`}
+                    data-cursor="link"
+                    className="link-underline font-medium text-navy transition-colors hover:text-cognac"
+                  >
+                    {contactEmails.general}
+                  </a>
+                </li>
+                <li>
+                  <span className="block text-navy/50">Direct</span>
+                  <a
+                    href={`mailto:${contactEmails.direct}`}
+                    data-cursor="link"
+                    className="link-underline font-medium text-navy transition-colors hover:text-cognac"
+                  >
+                    {contactEmails.direct}
+                  </a>
+                </li>
+              </ul>
+            </Reveal>
+
+            <Reveal from="up" delay={0.12}>
               <div className="mt-12 rounded-2xl bg-navy p-6 text-sm text-warmgray">
                 <p className="font-medium text-offwhite">Media &amp; press</p>
                 <p className="mt-2 leading-relaxed">
-                  Use the enquiry form and select the press option — media requests are routed to
-                  the communications team and answered within two business days.
+                  Use the enquiry form and select the press option, or email{" "}
+                  <a
+                    href={`mailto:${contactEmails.general}`}
+                    className="link-underline text-cognac-light"
+                    data-cursor="link"
+                  >
+                    {contactEmails.general}
+                  </a>
+                  . Media requests are answered within two business days.
                 </p>
               </div>
             </Reveal>

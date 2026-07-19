@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { footerNav, siteConfig } from "@/lib/content/navigation";
-import { hasPrimaryOffice, primaryOffice } from "@/lib/content/offices";
+import { contactEmails, hasPrimaryOffice, primaryOffice } from "@/lib/content/offices";
 import { SocialIcons } from "@/components/ui/SocialIcons";
 import { Logo } from "./Logo";
 
@@ -55,6 +55,13 @@ export function Footer() {
                 </span>
               ))}
               <span className="block">{primaryOffice.country}</span>
+              <a
+                href={`mailto:${contactEmails.general}`}
+                data-cursor="link"
+                className="mt-3 inline-block transition-colors hover:text-offwhite"
+              >
+                {contactEmails.general}
+              </a>
             </address>
           </div>
         )}

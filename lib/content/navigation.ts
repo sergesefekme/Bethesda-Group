@@ -62,6 +62,6 @@ export const siteConfig = {
   shortName: "Bethesda",
   description:
     "Bethesda Group is a pan-African investment technology group deploying long-term capital across renewable energy, technology, healthcare, education, infrastructure, agro-allied and advisory services.",
-  url: "https://www.bethesdagroup.com", // TODO(content): confirm production domain.
+  url: "https://bethesdaglobalnetwork.com",
   tagline: "Long-term capital for Africa's next era.",
 };

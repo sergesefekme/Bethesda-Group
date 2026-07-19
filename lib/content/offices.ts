@@ -1,4 +1,4 @@
-// Primary office location.
+// Primary office location and contact addresses.
 
 export interface Office {
   city: string;
@@ -7,16 +7,20 @@ export interface Office {
   addressLines: string[];
 }
 
-// TODO(content): replace with the real primary address. See CONTENT-NEEDED.md.
 export const primaryOffice: Office = {
-  city: "",
-  region: "",
-  country: "",
-  addressLines: [],
+  city: "Silver Spring",
+  region: "Maryland",
+  country: "United States",
+  addressLines: ["8720 Georgia Ave, Suite 302", "Silver Spring, MD 20910"],
 };
 
 /** True once the address above has been filled in. */
 export const hasPrimaryOffice = Boolean(primaryOffice.city && primaryOffice.country);
+
+export const contactEmails = {
+  general: "info@bethesdaglobalnetwork.com",
+  direct: "gkodjo@bethesdaglobalnetwork.com",
+} as const;
 
 // Countries of operation, used by the home AfricaMap hotspots. `x`/`y` are
 // percentage coordinates on the stylised map (0–100); `sectorCount` drives

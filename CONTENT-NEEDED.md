@@ -15,14 +15,12 @@ Search the repo for `TODO(content)` and `TODO(launch)` to find each spot in code
 
 ## 1. Blocking — the site is visibly incomplete without these
 
-### Primary office address
+### ~~Primary office address~~ — DONE (2026-07-19)
 `lib/content/offices.ts` → `primaryOffice`
 
-Needs: city, region/state, country, and street address lines. While empty, the
-office block is hidden in both the footer and `/contact`.
-
-> This replaces the previous five-office list (London, Lagos, Nairobi,
-> Johannesburg, Accra), which was removed as requested.
+8720 Georgia Ave, Suite 302, Silver Spring, MD 20910, United States. Renders in
+the footer and on `/contact`. Replaced the previous five-office list (London,
+Lagos, Nairobi, Johannesburg, Accra).
 
 ### Social profile URLs
 `lib/content/navigation.ts` → `socialLinks`
@@ -36,12 +34,19 @@ All four currently point at `#`. Needs live URLs for:
 | LinkedIn | |
 | X | |
 
-### Contact email addresses
-`app/contact/page.tsx`
+### ~~Contact email addresses~~ — DONE (2026-07-19)
+`lib/content/offices.ts` → `contactEmails`
 
-The press and general-enquiry addresses were placeholders and have been removed.
-The media block now directs people to the enquiry form instead. Supply real
-addresses if you want them shown directly.
+- General: `info@bethesdaglobalnetwork.com`
+- Direct: `gkodjo@bethesdaglobalnetwork.com`
+
+Both render as `mailto:` links on `/contact`; the general address also appears in
+the footer.
+
+> **Note:** the direct address was supplied as `gkodjo@bethesda**y**globalnetwork.com`.
+> That domain does not exist (no DNS, no MX) and mail to it would bounce, so the
+> spelling was corrected to match the live domain. Flag it if `gkodjo` genuinely
+> sits on a different domain.
 
 ---
 
@@ -194,9 +199,9 @@ between hiring rounds.
 
 ## 6. Miscellaneous
 
-- **Production domain** — `lib/content/navigation.ts` → `siteConfig.url` is set
-  to `https://www.bethesdagroup.com`. Confirm before deploy; it drives sitemap
-  and canonical URLs.
+- ~~**Production domain**~~ — DONE (2026-07-19). `siteConfig.url` corrected from
+  `https://www.bethesdagroup.com` (wrong, and live) to
+  `https://bethesdaglobalnetwork.com`. Drives sitemap and canonical URLs.
 - **Leadership headshots** — `public/images/leadership/` is empty. Images render
   as a duotone field until real photos land.
 - **Vector logo** — `public/images/logo.jpeg` is a 363×411 screenshot with an
