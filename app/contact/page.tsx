@@ -72,13 +72,6 @@ export default function ContactPage() {
                   >
                     {contactEmails.direct}
                   </a>
-                  <a
-                    href={`mailto:${contactEmails.directAlt}`}
-                    data-cursor="link"
-                    className="link-underline mt-1 block font-medium text-navy transition-colors hover:text-cognac"
-                  >
-                    {contactEmails.directAlt}
-                  </a>
                 </li>
               </ul>
 

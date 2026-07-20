@@ -20,12 +20,6 @@ export const hasPrimaryOffice = Boolean(primaryOffice.city && primaryOffice.coun
 export const contactEmails = {
   general: "info@bethesdaglobalnetwork.com",
   direct: "gkodjo@bethesdaglobalnetwork.com",
-  // WARNING: bethesdayglobalnetwork.com (note the "y") was unregistered as of
-  // 2026-07-19 — no A, MX or NS records. Mail to this address BOUNCES until the
-  // domain is registered and MX records are configured. Published at the
-  // owner's request on the understanding they will register it. Remove this
-  // entry if that does not happen. See CONTENT-NEEDED.md.
-  directAlt: "gkodjo@bethesdayglobalnetwork.com",
 } as const;
 
 export const contactPhone = {
